@@ -44,3 +44,19 @@ sudo mysql_secure_installation
 ```
 
 ![sql](images/sql.png)
+
+## STEP 3
+---
+### Installing PHP
+```bash
+sudo apt install php libapache2-mod-php php-mysql
+
+#verify that php is installed
+php -v
+```
+
+![php](images/php.png)
+
+## STEP 4
+---
+CREATING A VIRTUAL HOST FOR THE WEBSITE USING APACHE
