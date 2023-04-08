@@ -91,3 +91,74 @@ sudo echo 'Hello LEMP from hostname' $(curl -s http://169.254.169.254/latest/met
 
 http://\<Public-Ip_Address>:80
 ![nginx_echo](pbl2/nginx_url_echo.png)
+
+## STEP 5
+---
+### Testing PHP with NGINX
+```bash
+sudo vim /var/www/projectLEMP/info.php
+```
+>content of info.php
+```bash
+<?php
+phpinfo();
+```
+>Visit the URL http://server_IP/info.php
+
+![info_php](pbl2/info_php.png)
+
+## STEP 6
+---
+### Retrieving data from MySQL database with PHP
+```bash
+# Connect to MySQL
+sudo mysql
+
+# create database
+mysql> CREATE DATABASE `example_db`;
+
+# create user
+mysql> CREATE USER 'testuser'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+
+# grant access
+mysql> GRANT ALL ON example_db.* TO 'testuser'@'%';
+
+# exit mysql
+mysql> exit
+
+# log into mysql as testuser
+mysql -u example_user -p
+
+mysql> SHOW DATABASES;
+```
+>Create and populate table as shown in the screenshot below
+![sql](pbl2/sql.png)
+
+>create a PHP script that will connect to MySQL
+```bash
+sudo vim /var/www/projectLEMP/todo_list.php
+```
+content of todo_list.php
+```bash
+<?php
+$user = "example_user";
+$password = "password";
+$database = "example_db";
+$table = "todo_list";
+
+try {
+  $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+  echo "<h2>TODO</h2><ol>";
+  foreach($db->query("SELECT content FROM $table") as $row) {
+    echo "<li>" . $row['content'] . "</li>";
+  }
+  echo "</ol>";
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
+```
+>Visit the URL http://server_IP/todo_list.php
+
+![todo_url](pbl2/todo_url.png)
+
