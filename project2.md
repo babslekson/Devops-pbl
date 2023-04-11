@@ -132,6 +132,7 @@ mysql -u example_user -p
 mysql> SHOW DATABASES;
 ```
 >Create and populate table as shown in the screenshot below
+
 ![sql](pbl2/sql.png)
 
 >create a PHP script that will connect to MySQL
