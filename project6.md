@@ -2,7 +2,7 @@
 ---
 ## STEP 0
 ---
-###LAUNCH AN EC2 INSTANCE THAT WILL SERVE AS WEB SERVER and DATABASE SERVER
+### LAUNCH AN EC2 INSTANCE THAT WILL SERVE AS WEB SERVER and DATABASE SERVER
 ![instances](pbl6/instances.png)
 ## STEP 1
 ---
@@ -164,6 +164,7 @@ sudo systemctl status mysqld
 # Setup mysql and create user
 sudo mysql
 ```
+![sqlserver](pbl6/sqlserver.png)
 ## SETUP WORDPRESS
 ```bash
 # Setup wordpress
