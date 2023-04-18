@@ -254,5 +254,5 @@ sudo systemctl restart httpd
 
 ![toolingwebsite](pbl7/toolingwebsite.png)
 
-![propitix website](pbl7/propitixwebsite.png)
+![propitix website](pbl7/propitixwebsite1.png)
 
