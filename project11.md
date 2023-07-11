@@ -89,9 +89,19 @@ Within the inventory folder, inventory file was created  (.yml) for each environ
 
 ```
 ![](pbl11/wireshark.png)
+##STEP 5
+---
+### Run ansible test
+```bash
+cd ansible-config-mgt
+ansible-playbook -i inventory/dev.yml playbooks/common.yml
+```
+
 ![](pbl11/ansibleplay.png)
 ![](pbl11/ansibleplay2.png)
 ![](pbl11/ansibleplay3.png)
+### Updated architecture
+![](pbl11/updatedarchi.png)
 
 
 
