@@ -1,20 +1,20 @@
 # ANSIBLE CONFIGURATION MANAGEMENT – AUTOMATE PROJECT 7 TO 10
 ![jenkins](pbl11/project11.png)
 ---
-###STEP 0
+### STEP 0
 ---
-###Create a new repository on github named ansible config-mgt
+### Create a new repository on github named ansible config-mgt
 ---
-##STEP 1
-###install ansible
+## STEP 1
+### install ansible
 ```bash
 sudo apt install ansible 
 ```
-###STEP 2
-##Create a freestyle project 'ansible' in jenkins and point it to 'ansible-config-mgt'
+### STEP 2
+## Create a freestyle project 'ansible' in jenkins and point it to 'ansible-config-mgt'
 ![ansible-jenkins](pbl11/ansiblejenkins.png)
 ---
-###setup ssh key agent to enable ansible to ssh into the instances
+### setup ssh key agent to enable ansible to ssh into the instances
 ```bash
 eval `ssh-agent -s`
 ssh-add <path-to-private-key>
@@ -85,7 +85,7 @@ Within the inventory folder, inventory file was created  (.yml) for each environ
    - name: create directory
      file:
       path: /home/file
-      state: directory
+      state: directory -
 
 ```
 ![](pbl11/wireshark.png)
