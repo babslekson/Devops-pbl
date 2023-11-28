@@ -80,3 +80,108 @@ vim /etc/httpd/conf.d/ssl.conf
 ![certificate](pbl15/certicatemanager.png)
 
 ![record in hosted zone](pbl15/hostedzone.png)
+---
+### Create Application load balancer (one internal and external)
+![load balancer](pbl15/loadbalancers.png)
+---
+### Create EFS and access points for the company websites
+![efs](pbl15/efs.png)
+![access point](pbl15/accesspoint.png)
+---
+### Create launch templates from the AMIs
+ADD USER DATA to the configuration to setup the templates
+```bash
+
+##### bastion userdata
+#!/bin/bash
+yum install -y mysql
+yum install -y git tmux
+yum install -y ansible
+
+##### nginx userdata 
+#!/bin/bash
+yum install -y nginx
+systemctl start nginx
+systemctl enable nginx
+git clone https://github.com/babslekson/ACS-project-config.git
+mv /ACS-project-config/reverse.conf /etc/nginx/
+mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf-distro
+cd /etc/nginx/
+touch nginx.conf
+sed -n 'w nginx.conf' reverse.conf
+systemctl restart nginx
+rm -rf reverse.conf
+rm -rf /ACS-project-config
+
+##### tooling userdata
+#!/bin/bash
+mkdir /var/www/
+sudo mount -t efs -o tls,accesspoint=fsap-0b141fc186f89aa16 fs-0052646f490b9376c:/ /var/www/
+yum install -y httpd 
+systemctl start httpd
+systemctl enable httpd
+yum module reset php -y
+yum module enable php:remi-7.4 -y
+yum install -y php php-common php-mbstring php-opcache php-intl php-xml php-gd php-curl php-mysqlnd php-fpm php-json
+systemctl start php-fpm
+systemctl enable php-fpm
+git clone https://github.com/babslekson/tooling.git
+mkdir /var/www/html
+cp -R /tooling-1/html/*  /var/www/html/
+cd /tooling-1
+mysql -h olalekan-database.cixtanntjbvk.us-east-1.rds.amazonaws.com-u olalekanadmin -p toolingdb < tooling-db.sql
+cd /var/www/html/
+touch healthstatus
+sed -i "s/$db = mysqli_connect('mysql.tooling.svc.cluster.local', 'admin', 'admin', 'tooling');/$db = mysqli_connect('olalekan-database.cixtanntjbvk.us-east-1.rds.amazonaws.com', 'olalekanadmin', '12345678', 'toolingdb');/g" functions.php
+chcon -t httpd_sys_rw_content_t /var/www/html/ -R
+systemctl restart httpd
+
+##### wordpress userdata
+#!/bin/bash
+mkdir /var/www/
+sudo mount -t efs -o tls,accesspoint=fsap-084c8a2011e31f9e7 fs-0052646f490b9376c:/ /var/www/
+yum install -y httpd 
+systemctl start httpd
+systemctl enable httpd
+yum module reset php -y
+yum module enable php:remi-7.4 -y
+yum install -y php php-common php-mbstring php-opcache php-intl php-xml php-gd php-curl php-mysqlnd php-fpm php-json
+systemctl start php-fpm
+systemctl enable php-fpm
+wget http://wordpress.org/latest.tar.gz
+tar xzvf latest.tar.gz
+rm -rf latest.tar.gz
+cp wordpress/wp-config-sample.php wordpress/wp-config.php
+mkdir /var/www/html/
+cp -R /wordpress/* /var/www/html/
+cd /var/www/html/
+touch healthstatus
+sed -i "s/localhost/olalekan-database.cixtanntjbvk.us-east-1.rds.amazonaws.com/g" wp-config.php 
+sed -i "s/username_here/olalekanadmin/g" wp-config.php 
+sed -i "s/password_here/12345678/g" wp-config.php 
+sed -i "s/database_name_here/wordpressdb/g" wp-config.php 
+chcon -t httpd_sys_rw_content_t /var/www/html/ -R
+systemctl restart httpd
+```
+![launchtemplate](pbl15/launchtemplate.png)
+---
+### create Database in RDS instance
+![database](pbl15/database.png)
+---
+### Create AutoScaling group for Bastion, Nginx, Tooling and Wordpress
+![autoscalinggroup](pbl15/autoscalinggroup.png)
+
+### Create new records on Route53 pointing to the external ALB
+![route53](pbl15/route53.png) 
+
+### Check status of target group 
+![wordpress](pbl15/wordpresstg.png)
+![nginx](pbl15/nginxtg.png)
+![tooling](pbl15/toolingtg.png)
+
+### Check ec2 instances
+![instances](pbl15/instances.png)
+---
+#### The webpages are up and running
+![tooling webpage](pbl15/tooling.png)
+![wordpress webpage](pbl15/wordpress.png)
