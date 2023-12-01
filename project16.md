@@ -75,6 +75,7 @@ enable_dns_hostnames           = "true"
 ![tempui](pbl16/subnetinterface.png)
 
 - Run **terraform destroy**
+
 ![destroy-tmp](pbl16/destroy.png)
 ### Refactor the code 
 ---
