@@ -89,4 +89,10 @@ To refactor the code you have to
 ![main](pbl16/main.png)
 ![variable](pbl16/variable.png)
 
-![terraform_tf](pbl16/variable2.png)
+![terraform_tf](pbl16/variable2.png) 
+
+
+
+-----
+Countinuation 
+
