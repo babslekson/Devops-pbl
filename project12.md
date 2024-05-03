@@ -79,6 +79,7 @@ cd roles
 ansible-galaxy init webserver
 ```
 - Refactor the roles directory to match the structure below
+
 ![roles-structure](pbl12/roles-st.png)
 
 - Update the inventory/uat.yml with the private IP addresses of the 2 UAT web servers
