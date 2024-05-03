@@ -17,13 +17,16 @@
     - select ansible as source project
     - set /home/ubuntu/ansible-config-artifact as target directory
  - Test the setup
+
  ![save-artifact](pbl12/save-artifact.png)
  Check directory permissions if AccessDenied Error is encountered
 
  ## Refactor Ansible
  ---
  - Change the directory structure to match below 
+ 
  ![code_structure](pbl12/structure.png)
+ 
  - in the site.yml file import common.yml
  ```bash
  ---
