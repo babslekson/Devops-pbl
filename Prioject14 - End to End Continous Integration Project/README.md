@@ -118,8 +118,7 @@ A video illustration of the project is available, demonstrating the end-to-end C
 
 ![video illustration](images/)
 
-### Dependencies
-Dependences to be installed
+### Dependences to be installed
 ------
 ```bash
 yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
