@@ -116,11 +116,11 @@ Deploy to Dev Environment: The Ansible playbook is triggered to deploy the appli
 Video Illustration
 A video illustration of the project is available, demonstrating the end-to-end CI/CD pipeline in action.
 
-![video illustration](images/Project-14.webm)
+![video illustration](images/)
 
 ### Dependencies
 Dependences to be installed
-====================================
+------
 
 yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 yum install -y dnf-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm
@@ -131,11 +131,11 @@ python3 -m pip install PyMySQL
 python3 -m pip install mysql-connector-python
 python3 -m pip install psycopg2==2.7.5 --ignore-installed
 Installing JAVA
-====================================
+-------
 
 sudo yum install java-11-openjdk-devel -y
 Install php
-=====================================
+-------
 
 yum module reset php -y
 yum module enable php:remi-7.4 -y
@@ -143,21 +143,21 @@ yum install -y php php-common php-mbstring php-opcache php-intl php-xml php-gd p
 systemctl start php-fpm
 systemctl enable php-fpm
 Ansible dependencies to install
-=====================================
+------
 
 For Mysql Database
 ansible-galaxy collection install community.mysql
 For Postgresql Database
 ansible-galaxy collection install community.postgresql
 Install composer
-=====================================
+-------
 
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/bin/composer
 Verify Composer is installed or not
 composer --version
 Install phpunit, phploc
-=====================================
+--------
 
 sudo dnf --enablerepo=remi install php-phpunit-phploc
 wget -O phpunit https://phar.phpunit.de/phpunit-7.phar
