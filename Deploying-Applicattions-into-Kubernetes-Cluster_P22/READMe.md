@@ -20,7 +20,7 @@ However, some organizations with strict compliance and security requirements pre
 Hybrid Cloud Setups
 Some setups combine both public and private clouds. For instance, master nodes, etcd clusters, and worker nodes running stateful applications can be configured in private data centers, while worker nodes requiring heavy computation and stateless applications can run in public clouds. This hybrid architecture balances compliance requirements with the advantages of public cloud capabilities.
 
-${{insert pictuere}}
+![kubernetes](images/kubernetes.png)
 
 ### Deploying Applications Using Kubernetes Objects
 In this section, we will write configuration files for Kubernetes objects, commonly referred to as `manifests`, using `yaml`syntax and deploy them using the `kubectl` console. First, let's understand what a Kubernetes object is.
