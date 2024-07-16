@@ -215,13 +215,14 @@ kubectl apply -f nginx-pod.yaml
 ```bash
 kubectl  port-forward svc/nginx-service 8089:80
 ```
-output:
+**output**:
 ```bash
 kubectl  port-forward svc/nginx-service 8089:80
 Forwarding from 127.0.0.1:8089 -> 80
 Forwarding from [::1]:8089 -> 80
 ```
-Curl localhost:8089- you should now be able to see the nginx page through localhost.
+3. Curl localhost:8089- you should now be able to see the nginx page through localhost.
+
 ![localhost](images/curlocalhost.png)
 
 #### Expose a Service on a server's public IP address & static port 
