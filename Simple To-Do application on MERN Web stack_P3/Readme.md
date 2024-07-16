@@ -85,6 +85,15 @@ node index.js
 ![express](pbl3/express.png)
 
 **Routes**
+There are three actions that our To-Do application needs to be able to do:
+
+- Create a new task
+- Display list of all tasks
+- Delete a completed task
+
+Each task will be associated with some particular endpoint and will use different standard HTTP request methods: POST, GET, DELETE.
+For each task, we need to create routes that will define various endpoints that the To-do app will depend on. So let us create a folder routes
+
 ```bash
 mkdir routes
 
@@ -114,6 +123,10 @@ router.delete('/todos/:id', (req, res, next) => {
 module.exports = router;
 ```
 **Models**
+Since the app is going to make use of Mongodb which is a NoSQL database, we need to create a model.
+We will also use models to define the database schema . This is important so that we will be able to define the fields stored in each Mongodb document.
+ In essence, the Schema is a blueprint of how the database will be constructed, including other data fields that may not be required to be stored in the database. These are known as virtual properties
+To create a Schema and a model, install mongoose which is a Node.js package that makes working with mongodb easier.
 ```bash
 # Install mongoose ORM
 npm install mongoose
@@ -148,6 +161,8 @@ const Todo = mongoose.model('todo', TodoSchema);
 module.exports = Todo;
 ```
 **update content of api.js**
+Now we need to update our routes from the file api.js in 'routes' directory to make use of the new model.
+
 ```bash
 const express = require ('express');
 const router = express.Router();
@@ -181,6 +196,12 @@ Todo.findOneAndDelete({"_id": req.params.id})
 
 module.exports = router;
 ```
+**MongoDB Database**
+We need a database where we will store our data. For this we will make use of mLab. mLab provides MongoDB database as a service solution (DBaaS), so to make life easy, you will need to sign up for a shared clusters free account, which is ideal for our use case
+
+Allow access to the MongoDB database from anywhere (Not secure, but it is ideal for testing)
+
+In the index.js file, we specified process.env to access environment variables, but we have not yet created this file. So we need to do that now.
 **Create mongodb database and add connection string to .env**
 ```bash
 touch .env
@@ -234,11 +255,14 @@ app.listen(port, () => {
 console.log(`Server running on port ${port}`)
 });
 ```
+Using environment variables to store information is considered more secure and best practice to separate configuration and secret data from the application, instead of writing connection strings directly inside the index.js application file.
+
 **Start the server**
 ```bash
 node index.js
 ```
 ***Test the routes using postman**
+Create a POST, GET and DELETE request to the API http://<PublicIP-or-PublicDNS>:5000/api/todos. This request sends a new task to our To-Do list so the application could store it in the database.
 ![postman1](pbl3/postman1.png)
 ![postman2](pbl3/postman2.png)
 ![postman3](pbl3/postman3.png)
@@ -246,6 +270,8 @@ node index.js
 ##STEP 3
 ---
 ###FRONTEND CREATION
+Since we are done with the functionality we want from our backend and API, it is time to create a user interface for a Web client (browser) to interact with the application via API. To start out with the frontend of the To-do app, we will use the create-react-app command to scaffold our app.
+
 ```bash
 # Create react app
 npx create-react-app client
@@ -284,7 +310,7 @@ npm run dev
 >Visit http://\<Public-IP-Address>:3000
 
 ![react](pbl3/react.png)
-###Create React components
+### Create React components
 ```bash
 cd client
 
