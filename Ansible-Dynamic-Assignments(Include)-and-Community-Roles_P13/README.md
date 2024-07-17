@@ -1,16 +1,17 @@
 # ANSIBLE DYNAMIC ASSIGNMENTS(Include) 
 In this project we will introduce [dynamic assignemts](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse.html#includes-dynamic-re-use) by using `include` module
 
-This module is different to the `static` module. static assignments use `import` ansible module while dynamic assignments use `include`
+This module is different to the `static` module. Static assignments use `import` ansible module while dynamic assignments use `include`
 
-When the *import* module is used, all statements are pre-processed at the time playbooks are *parsed*. Meaning, when you execute `site.yml` playbook, Ansible will process all the playbooks referenced during the time it is parsing the statements. This also means that, during actual execution, if any statement changes, such statements will not be considered. Hence, it is static.
+When the *import* module is used, all statements are pre-processed at the time playbooks are *parsed*. Meaning, when you execute `site.yml` playbook, Ansible will process all the playbooks referenced during the time it is parsing the statements. 
+This also means that, during actual execution, if any statement changes, such statements will not be considered. Hence, it is static.
 On the other hand, when include module is used, all statements are processed only during execution of the playbook. Meaning, after the statements are parsed, any changes to the statements encountered during execution will be used.
 Take note that in most cases it is recommended to use static assignments for playbooks, because it is more reliable. With dynamic ones, it is hard to debug playbook problems due to its dynamic nature. However, you can use dynamic assignments for environment specific variables as we will be introducing in this project.
 
 ### introducting Dynamic Assignment into our structure 
 Create a new branch in your ansible config and name it dynamic-assignments.
 
-In ansible repo create a new folder, name it dynamic-assignments. inside this folder, a file env-vars.yml will be created. we will instruct site.yml to include this in the playbook later 
+In ansible repo create a new folder, name it dynamic-assignments. inside this folder, a file `env-vars.yml` will be created. we will instruct `site.yml` to include this in the playbook later 
 ![env-vars](pbl13/env-vars.png)
 
 ### Edit the env-vars.yml file 
@@ -82,7 +83,7 @@ load_balancer_is_required: false
 ```bash
 enable_nginx_lb: true
 load_balancer_is_required: false
-###The same must work with apache LB, so you can switch it by setting respective environmental variable to true and other to false.
+#The same must work with apache LB, so you can switch it by setting respective environmental variable to true and other to false.
 ```
 - In the static-assignments/loadbalancers.yml file add the instructions below
 ```bash
