@@ -1,5 +1,5 @@
 
-# ANSIBLE REFACTORING AND STATIC ASSIGNMENTS (IMPORTS AND ROLES
+# ANSIBLE REFACTORING AND STATIC ASSIGNMENTS (IMPORTS AND ROLES)
 ---
  ## Ansible Refactoring And Static Assignments
  ![homepage](pbl12/homepage.png)

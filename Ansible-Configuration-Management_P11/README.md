@@ -1,6 +1,11 @@
 # ANSIBLE CONFIGURATION MANAGEMENT – AUTOMATE PROJECT 7 TO 10
 ![jenkins](pbl11/project11.png)
 ---
+
+## Tasks
+- Install and configure Ansible client to act as a Jump Server/Bastion Host
+- Create a simple Ansible playbook to automate servers configuration
+
 ### STEP 0
 ---
 ### Create a new repository on github named ansible config-mgt
