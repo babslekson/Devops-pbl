@@ -1,4 +1,14 @@
-#MEAN STACK IMPLEMENTATION
+# MEAN STACK IMPLEMENTATION
+In this project we are going to implement a simple Book Register web form using MEAN stack.
+MEAN Stack is a combination of following components:
+
+MongoDB (Document database) - Stores and allows to retrieve data.
+
+Express (Back-end application framework) - Makes requests to Database for Reads and Writes.
+
+Angular (Front-end application framework) - Handles Client and Server Requests
+
+Node.js (JavaScript runtime environment) - Accepts requests and displays results to end user
 ## STEP 0
 ---
 ### Create EC2 instance 
@@ -39,7 +49,9 @@ sudo service mongodb start
 # Verify MongoDB is active
 sudo systemctl status mongodb
 ```
-**Install npm and body-parser**
+**Install body-parser package**
+We need 'body-parser' package to help us process JSON files passed in requests to the server.
+
 ```bash
 sudo apt install -y npm
 sudo npm install body-parser
@@ -139,6 +151,7 @@ var Book = mongoose.model('Book', bookSchema);
 module.exports = mongoose.model('Book', bookSchema);
 ```
 **Access the routes with AngularJS**
+AngularJS provides a web framework for creating dynamic views in your web applications. In this project, we use AngularJS to connect our web page with Express and perform actions on our book register.
 ```bash
 cd ../..
 
