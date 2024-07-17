@@ -57,4 +57,8 @@ sudo tail -f /var/log/httpd/access_log
 ```
 ![HTTP GET requests](pbl8/tail.png)
 
-Continuation of this project by adding jenkins to automate changes link - 
+### Continuation: Project 9 - Integrating Jenkins for Continuous Integration
+In the next phase of our [project](https://github.com/babslekson/dareyio-pbl/blob/main/Tooling-Website-Deployment-Automation-With-Continuous-Integration_P9/README.md)
+, we will leverage Jenkins' continuous integration (CI) capabilities to streamline our development workflow. By integrating Jenkins with our GitHub repository, we will ensure that every change made to the source code in GitHub is automatically reflected in our Tooling Website.
+
+Stay tuned for an in-depth guide on setting up Jenkins, configuring it to work with our GitHub repository, and automating our deployment process to enhance the reliability and efficiency of our development pipeline.

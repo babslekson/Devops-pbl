@@ -272,7 +272,7 @@ sudo systemctl restart httpd
 
 ![propitix website](pbl7/propitixwebsite1.png)
 
-Continuation: [Adding a Load Balancer](https://github.com/babslekson/dareyio-pbl/blob/main/Load-Balancer-Solution-With-Apache_P8/README.md) 
+### Continuation: [Adding a Load Balancer](https://github.com/babslekson/dareyio-pbl/blob/main/Load-Balancer-Solution-With-Apache_P8/README.md) 
 To further enhance our web solution, we will be adding a load balancer in [next project](https://github.com/babslekson/dareyio-pbl/blob/main/Load-Balancer-Solution-With-Apache_P8/README.md). This will provide several benefits:
 The load balancer will distribute incoming traffic across the three web servers, providing a single point of access for users and improving the overall performance and reliability of our WordPress application.
 
