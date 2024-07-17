@@ -75,3 +75,6 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 #### Verify changes in NFS server
 ![verify changes](pbl9/nfschanges.png) 
+
+### Continuation: Configuring TLS/SSL
+In the next [project](https://github.com/babslekson/Devops-pbl/blob/main/Load-Balancer-Solution-With-Nginx-and-SSL_TLS_P10/README.md), we will enhance the security of our web solutions by registering the Tooling Website with Let's Encrypt Certificate Authority. This automated process will ensure the issuance of SSL/TLS certificates using the certbot shell client recommended by Let's Encrypt. Securing our connections with TLS/SSL encryption is crucial to safeguarding user data during transit.
