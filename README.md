@@ -1,3 +1,1 @@
-# dareyio-pbl
-Darey.io projects
-Lamp installation
+Devops projects 
