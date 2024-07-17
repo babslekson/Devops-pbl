@@ -1,5 +1,8 @@
 # WEB SOLUTION WITH WORDPRESS
 ---
+This project consists of two parts:
+1. Configure storage subsystem for Web and Database servers based on Linux OS.
+2. Install WordPress and connect it to a remote MySQL database server
 ## STEP 0
 ---
 ### LAUNCH AN EC2 INSTANCE THAT WILL SERVE AS WEB SERVER and DATABASE SERVER

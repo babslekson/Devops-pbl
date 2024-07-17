@@ -108,6 +108,10 @@ df -h
 ![etcfstab](pbl7/etcfstab.png)
 
 ### INSTALL NFS SERVER AND EXPORT MOUNTS FOR WEBSERVERS' SUBNET CIDR TO CONNECT AS CLIENT
+
+Export the mounts for webservers' subnet cidr to connect as clients. For simplicity, you will install your all three Web Servers inside the same subnet, but in production set up you would probably want to separate each tier inside its own subnet for higher level of security.
+To check your subnet cidr - open your EC2 details in AWS web console and locate 'Networking' tab and open a Subnet link
+
 ```bash
 sudo yum -y update
 sudo yum install nfs-utils -y
@@ -116,6 +120,8 @@ sudo systemctl enable nfs-server.service
 sudo systemctl status nfs-server.service
 ```
 ![nfsstatus](pbl7/nfs.png)
+
+
 ```bash
 #set up permission that will allow our Web servers to read, write and execute files on NFS
 sudo chown -R nobody: /mnt/apps
@@ -145,6 +151,9 @@ sudo exportfs -arv
 rpcinfo -p | grep nfs
 ```
 ### SET INBOUND RULE FOR NFS
+
+In order for NFS server to be accessible from your client, you must open following ports: TCP 111, UDP 111, UDP 2049
+
 ![nfssecuritygroup](pbl7/nfssecuritygp.png)
 > RESTART NFS SERVER
 ```bash
@@ -166,6 +175,13 @@ sudo apt install mysql-server
 ## STEP 3
 ---
 ### PREPARE WEBSERVERS
+
+During the next steps we will do following:
+
+- Configure NFS client (this step must be done on all three servers)
+- Deploy a Tooling application to our Web Servers into a shared NFS folder
+- Configure the Web Servers to work with a single MySQL database
+
 ![web servers instances](pbl7/webserverinstance.png)
 ### INSTALL NFS CLIENT ON THE WEB SERVERS 
 ```bash
@@ -255,4 +271,6 @@ sudo systemctl restart httpd
 ![toolingwebsite](pbl7/toolingwebsite.png)
 
 ![propitix website](pbl7/propitixwebsite1.png)
+
+Continuation of this project is adding load balancer to distribute traffic to three webservers. link()
 
