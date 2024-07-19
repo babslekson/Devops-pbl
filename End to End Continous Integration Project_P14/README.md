@@ -124,7 +124,7 @@ Deploy to Dev Environment: The Ansible playbook is triggered to deploy the appli
 Video Illustration
 A video illustration of the project is available, demonstrating the end-to-end CI/CD pipeline in action.
 
-![video illustration](https://drive.google.com/file/d/1YpPPt5zlClMBHMooybneLIgJ1zIeyRMJ/view?usp=drive_link)
+[video illustration](https://drive.google.com/file/d/1YpPPt5zlClMBHMooybneLIgJ1zIeyRMJ/view?usp=drive_link)
 
 ### Dependences to be installed
 ------
