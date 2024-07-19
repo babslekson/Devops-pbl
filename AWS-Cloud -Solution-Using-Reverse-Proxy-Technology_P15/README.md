@@ -67,7 +67,8 @@ vim /etc/httpd/conf.d/ssl.conf
 ### Create AMIs from the instances
 ![ami](pbl15/ami.png)
 ---
-### Create target groups
+### Create target groups for reverse proxy(nginx), bastion and webservers(tooling and wordpress)
+[Target groups](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html) route requests to specific registered targets, such as EC2 instances, using the specified protocol and port number. Health checks are performed on these targets, and if a target fails a health check, traffic will not be routed to it. This ensures that only healthy targets receive traffic, maintaining the reliability of your application.
 ![target groups](pbl15/targetgroup.png)
 ---
 ### Create KMS key
