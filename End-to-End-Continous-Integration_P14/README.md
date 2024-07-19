@@ -101,30 +101,30 @@ The CI/CD pipeline is designed to automate the build, testing, analysis, packagi
 Pipeline Workflow
 The CI/CD pipeline follows the following workflow:
 
-Initial Cleanup: The workspace is cleaned up to ensure a fresh build environment.
+**Initial Cleanup**: The workspace is cleaned up to ensure a fresh build environment.
 
-Checkout Source Code: The PHP application source code is checked out from the Git repository.
+**Checkout Source Code**: The PHP application source code is checked out from the Git repository.
 
-Prepare Dependencies: The required dependencies are installed, the database is migrated, and the application key is generated.
+**Prepare Dependencies**: The required dependencies are installed, the database is migrated, and the application key is generated.
 
-Execute Unit Tests: Unit tests for the PHP application are executed.
+**Execute Unit Tests**: Unit tests for the PHP application are executed.
 
-Code Analysis: The code is analyzed using the phploc tool, and various metrics are generated and plotted.
+**Code Analysis**: The code is analyzed using the phploc tool, and various metrics are generated and plotted.
 
-SonarQube Quality Gate: The code is analyzed by SonarQube to ensure it meets the defined quality standards.
+**SonarQube Quality Gate**: The code is analyzed by SonarQube to ensure it meets the defined quality standards.
 
-Package Artifact: The application is packaged as a ZIP file.
+**Package Artifact**: The application is packaged as a ZIP file.
 
-Upload Artifact to Artifactory: The packaged artifact is uploaded to Artifactory for storage and distribution.
+**Upload Artifact to Artifactory**: The packaged artifact is uploaded to Artifactory for storage and distribution.
 
-Deploy to Dev Environment: The Ansible playbook is triggered to deploy the application to the development environment.
+**Deploy to Dev Environment**: The Ansible playbook is triggered to deploy the application to the development environment.
 
 
 
 Video Illustration
 A video illustration of the project is available, demonstrating the end-to-end CI/CD pipeline in action.
 
-[video illustration](https://drive.google.com/file/d/1YpPPt5zlClMBHMooybneLIgJ1zIeyRMJ/view?usp=drive_link)
+[Video illustration](https://drive.google.com/file/d/1YpPPt5zlClMBHMooybneLIgJ1zIeyRMJ/view?usp=drive_link)
 
 ### Dependences to be installed
 ------
