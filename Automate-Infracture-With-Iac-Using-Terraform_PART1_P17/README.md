@@ -45,14 +45,13 @@ enable_dns_hostnames           = var.enable_dns_hostnames
 ---
 
 - Availability_zone
+
 We need to create a single resource block that can dynamically create resources without specifying multiple blocks. Terraform has a functionality that allows us to pull data which exposes information to use. We will explore the use of Terraform's Data Sources to fetch information outside of Terraform.
 ```bash
 data "aws_availablility_zones" "available" {
         state = "available"
         }
 ```
--
-
 - Create 2 public subnets
 ```bash
 resource "aws_subnet" "public" {
