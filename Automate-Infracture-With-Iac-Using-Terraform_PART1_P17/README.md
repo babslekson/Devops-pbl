@@ -1,13 +1,77 @@
-# AUTOMATE INFRASTRUCTURE WITH IAC USING TERRAFORM PART 2
+# AUTOMATE INFRASTRUCTURE WITH IAC USING TERRAFORM PART 1
 ---
+
+## Setup up workspace
+
+
+Currently, we will be using the local workspace on our PC to manage Terraform state files. As the project progresses, we will transition to more robust state management practices by leveraging cloud services: 
+ S3 for terraform state files, dynamo db for state locking and also make use of terraform cloud workspace
+
+
 ## Setup Networking of the Architecture
+
+According to our architectural design, we require 6 subnets:
+
+2 public
+2 private for webservers
+2 private for data layer
 ---
+
+- Create a directory and a file named main.tf in the directory
+- Write the Provider and resources section
 ```bash
-tags = {
-    Owner-Email = "olalekanbabayemi1@gmail.com"
-    Managed-By = "terraform"
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "5.28.0"
+    }
+  }
 }
+
+provider "aws" {
+  region = "var.region"
+}
+
+# Create VPC
+resource "aws_vpc" "main" {
+cidr_block                     = var.vpc_cidr
+enable_dns_support             = var.enable_dns_support
+enable_dns_hostnames           = var.enable_dns_hostnames
 ```
+---
+
+- Availability_zone
+We need to create a single resource block that can dynamically create resources without specifying multiple blocks. Terraform has a functionality that allows us to pull data which exposes information to use. We will explore the use of Terraform's Data Sources to fetch information outside of Terraform.
+```bash
+data "aws_availablility_zones" "available" {
+        state = "available"
+        }
+```
+-
+
+- Create 2 public subnets
+```bash
+resource "aws_subnet" "public" {
+    count                      = var.preferred_number_of_public_subnets == null ? length(data.aws_availability_zones.available.names) : var.preferred_number_of_public_subnets
+    vpc_id                     = aws_vpc.main.id
+    cidr_block                 = [for i in range(2, 5, 2) : cidrsubnet(var.vpc_cidr, 8, i)]
+    availability_zone          = data.aws_availability_zones.available.names[count.index]
+     map_public_ip_on_launch   = "true"
+```
+Dynamic count
+The `count` determines how many subnets will be created. 
+- If `var.preferred_number_of_public_subnets` is `null`, the number of subnets created will be equal to the number of available availability zones (length(data.aws_availability_zones.available.names)).
+- If `var.preferred_number_of_public_subnets` is specified, that value will be used to determine the number of subnets.
+
+CIDR block
+
+`[for i in range (2,5,2)]` takes care of creating the subnets with even numbers according to our architecture. Its output will be `[2,4]`
+cidr_block is dynamic by making use of a function  cidrsubnet(). it accepts 3 paramenters `cidrsubnet(prefix, newbits, netnum)`
+ The `prefix` parameter must be given in CIDR notation, same as for VPC.
+The `newbits` parameter is the number of additional bits with which to extend the prefix. For example, if given a prefix ending with /16 and a newbits value of 4, the resulting subnet address will have length /20
+The `netnum` parameter is a whole number that can be represented as a binary integer with no more than newbits binary digits, which will be used to populate the additional bits added to the prefix
+
 - Create 4 private subnets
 ```bash
 resource "aws_subnet" "private" {
@@ -24,6 +88,7 @@ resource "aws_subnet" "private" {
         },
     )
 }
+
 ```
 - Create `internet_gateway.tf`file
 - Create Internet Gateway
@@ -70,6 +135,8 @@ resource "aws_route_table" "private-rtb" {
     },
   )
 }
+
+
 ```
 - Create route for the private route table and attach a nat gateway to it 
 ```bash
