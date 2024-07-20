@@ -10,6 +10,10 @@ Currently, we will be using the local workspace on our PC to manage Terraform st
 
 ## Setup Networking of the Architecture
 
+<p align="left">
+  <img src="https://raw.githubusercontent.com/babslekson/Devops-pbl/main/AWS-Cloud-Solution-Using-Reverse-Proxy-Technology_P15/pbl15/architecture.png" alt="Project Architecture" width="60%"/>
+</p>
+
 According to our architectural design, we require 6 subnets:
 
 2 public
