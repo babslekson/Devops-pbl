@@ -16,11 +16,11 @@ Currently, we will be using the local workspace on our PC to manage Terraform st
 
 According to our architectural design, we require 6 subnets:
 
-2 public
-2 private for webservers
-2 private for data layer
----
+2 public subnets
+2 private subnetsfor webservers
+2 private subnets for data layer
 
+---
 - Create a directory and a file named main.tf in the directory
 - Write the Provider and resources section
 ```bash
