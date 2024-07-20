@@ -4,6 +4,7 @@
 - ### Setup Workspace
 ---
 - #### Create S3 bucket
+Create S3 bucket to store store terrfaorm state file
 
 ![s3-bucket](pbl16/s3bucket.png)
 
