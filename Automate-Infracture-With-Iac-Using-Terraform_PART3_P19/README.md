@@ -23,7 +23,7 @@ Create a repository and push all your terraform cloud to the repository
 4. Configure variable on 
 Terraform Cloud supports two types of variables: 
 
-`environment variables` and `Terraform variables`. Either type can be marked as sensitive, which prevents them from being displayed in the Terraform Cloud web UI and makes them write-only.
+`Environment variables` and `Terraform variables`. Either type can be marked as sensitive, which prevents them from being displayed in the Terraform Cloud web UI and makes them write-only.
 
 Set two environment variables: AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY, set the values that we used in previous project. These credentials will be used to privision AWS infrastructure by Terraform Cloud.
 
