@@ -1,4 +1,4 @@
-### AUTOMATE INFRACTRUCTURE WITH IAC USING TERRAFORM PART #
+### AUTOMATE INFRACTRUCTURE WITH IAC USING TERRAFORM PART 2
 ----
 ### Introducting Backend on S3
 - Create a file and name it backend.tf
