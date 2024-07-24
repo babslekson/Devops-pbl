@@ -1068,3 +1068,7 @@ resource "aws_db_subnet_group" "rds-subnet-dbgroup" {
 ![intgw](pbl17/intgw.png)
 ![Natgw](pbl17/NATgw.png)
 ![securitygroup](pbl17/seg.png)
+
+### Continuation - Enhancing State Management and Code Modularization
+The next [project](link) will involve adding an S3 backend for state files, refactoring our code using modules, and creating a DynamoDB table for state locking and consistency checks
+
