@@ -41,3 +41,5 @@ By now, you have tried to launch plan and apply manually from Terraform Cloud we
 ![ami](pbl19/ami.png)
 ![aws-ami](pbl19/aws-ami.png)
 ![terraform-cloud-plan](pbl19/terraform-cloud.png)
+![website1](https://github.com/babslekson/Devops-pbl/blob/main/AWS-Cloud-Solution-Using-Reverse-Proxy-Technology_P15/pbl15/tooling.png)
+![website2](https://github.com/babslekson/Devops-pbl/blob/main/AWS-Cloud-Solution-Using-Reverse-Proxy-Technology_P15/pbl15/wordpress.png)
