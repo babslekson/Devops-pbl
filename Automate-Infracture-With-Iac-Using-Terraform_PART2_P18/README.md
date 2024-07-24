@@ -65,3 +65,6 @@ terraform {
 - Run `terraform plan`
 
 ![terraform-plan](pbl18/terraformplan.png)
+
+## Continuation - Advanced Automation and Custom Image Creation
+In the next [phase](https://github.com/babslekson/Devops-pbl/blob/main/Automate-Infracture-With-Iac-Using-Terraform_PART3_P19/README.md), we'll integrate Terraform Cloud for enhanced collaboration and state management, utilize Packer to create custom AMIs, and implement Ansible for efficient server configuration
