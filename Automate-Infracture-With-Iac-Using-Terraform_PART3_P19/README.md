@@ -10,7 +10,7 @@ Packer is an open-source tool for creating identical machine images for multiple
 
 
 ## STEP 1
-Le us explore how we can migrate our codes to Terraform Cloud and manage our AWS infrastructure from there:
+Let us explore how we can migrate our codes to Terraform Cloud and manage our AWS infrastructure from there:
 
 1. Create a Terraform Cloud account
 2. Create an organisation and configure a workspace

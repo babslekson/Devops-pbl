@@ -224,6 +224,7 @@ Forwarding from [::1]:8089 -> 80
 3. Curl localhost:8089- you should now be able to see the nginx page through localhost.
 
 ![localhost](images/curlocalhost.png)
+![nginx-webpage](images/nginx-lh.png)
 
 #### Expose a Service on a server's public IP address & static port 
 Sometimes, it may be needed to directly access the application using the public IP of the server (when we speak of a K8s cluster we can replace 'server' with 'node') the Pod is running on. This is when the [NodePort](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport) service type comes in handy.
@@ -514,5 +515,10 @@ Install vim so that you can edit the file
 apt-get update
 apt-get install vim
 ```
-5. Update the content of the file and curl localhost
+5. Update the content of the file and check the browser
 ![webpage](images/webpage.png)
+![webpage](images/web-page.png)
+
+when you delete the pod or the pod dies, the content we saved in the container will no longer be there. that is because Pods do not store data when they are being recreated.
+
+In the next project  we will address this with persistent volumes
